@@ -1,0 +1,14 @@
+.cs-head > .text-white {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.banner{
+    background-image: url('../../../Assets/CarImage/car-night.jpg');
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    
+};
