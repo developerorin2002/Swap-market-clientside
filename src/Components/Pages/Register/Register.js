@@ -1,12 +1,68 @@
-import React from 'react';
-import { FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
+import React, { useContext } from 'react';
+import { TextField } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import googleImg from '../../Assets/Logo/google.png'
 import login from '../../Assets/login.svg';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
+import toast from 'react-hot-toast';
+
 const Register = () => {
+    const { handleRegistration, updateUserProfile } = useContext(AuthContext);
     const { register, handleSubmit } = useForm();
+    const imgBBSecret = process.env.REACT_APP_IMGBB;
+
     const handleRegister = (data) => {
+
         console.log(data)
+        const name = data.name;
+        const email = data.email;
+        const password = data.password;
+        const account = data.account;
+        const image = data.photo[0];
+        // form data for image hosting 
+        const formData = new FormData();
+        formData.append("image", image)
+        // register account 
+        handleRegistration(email, password)
+            .then(res => {
+                // host image in img bb
+                fetch(`https://api.imgbb.com/1/upload?key=${imgBBSecret}`, {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        // update profile
+                        const photoUrl = data.data.image.url;
+                        updateUserProfile(name, photoUrl)
+                            .then(res => {
+                                // save user in database
+                                const user = {
+                                    name: name,
+                                    email: email,
+                                    role: account,
+                                    image: photoUrl,
+                                };
+                                fetch('http://localhost:5000/users', {
+                                    method: 'POST',
+                                    headers: {
+                                        'content-type': 'application/json'
+                                    },
+                                    body: JSON.stringify(user)
+                                })
+                                    .then(res => res.json())
+                                    .then(data => {
+                                        toast.success('user created successfully')
+                                    })
+                            })
+                            .catch(err => console.log(err))
+
+                    })
+
+            })
+            .catch(err => console.log(err))
+
+
     }
     return (
         <div>
@@ -18,33 +74,30 @@ const Register = () => {
                     <div className="col-lg-4 login-field ">
                         <div className="signup-form">
                             <form onSubmit={handleSubmit((data) => handleRegister(data))}>
-                                <h3 className='text-center'>Sign Up</h3>
+                                <h3 className='text-center py-2'>Sign Up</h3>
                                 <div className='my-3'>
-                                    <TextField {...register("email")} className='w-100' id="outlined-basic" label="Your Email " variant="outlined" />
+                                    <TextField type="email" {...register("email")} className='w-100' id="outlined-basic" label="Your Email " variant="outlined" />
                                 </div>
                                 <div className='my-3'>
                                     <TextField {...register("name")} className='w-100' id="outlined-basic" label="Your Name" variant="outlined" />
                                 </div>
-                                <FormControl fullWidth>
-                                    <InputLabel id="demo-simple-select-label">Account Type</InputLabel>
-                                    <Select onChange={(e)=>handleRegister(e.target.value)} {...register("accountType")}
-                                        labelId="demo-simple-select-label"
-                                        id="demo-simple-select"
-                                        label="Account-Type"
-                                     
-                                    >
-                                        <MenuItem value={"seller"}>Seller</MenuItem>
-                                        <MenuItem value={"buyer"} selected>Buyer</MenuItem>
-                                    </Select>
-                                </FormControl>
+
+                                <select {...register("account")} className="form-select" aria-label="Default select example">
+                                    <option value="seller">Seller</option>
+                                    <option selected value="buyer">Buyer</option>
+                                </select>
+
                                 <div className='my-3'>
-                                    <TextField {...register("password")} className='w-100' id="outlined-basic" label="Your Password " variant="outlined" />
+                                    <TextField type="password" {...register("password")} className='w-100' id="outlined-basic" label="Your Password " variant="outlined" />
+                                </div>
+                                <div className='my-3'>
+                                    <TextField type="file" {...register("photo")} className='w-100' id="outlined-basic" variant="outlined" />
                                 </div>
                                 <input className='login-btn w-100' type="submit" />
                             </form>
                             <div className='mt-2'>
                                 <p className='text-center'>Or Sign In With</p>
-                                <div className='text-center'>
+                                <div className='text-center py-2'>
                                     <button className='google-login-btn'><img src={googleImg} className='google-login' alt="" /></button>
                                 </div>
                             </div>
