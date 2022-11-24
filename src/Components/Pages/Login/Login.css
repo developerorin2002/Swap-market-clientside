@@ -8,3 +8,17 @@
 .login-field{
     border: 1px solid #E5EAF4;
 }
+.google-login{
+    border: none;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    
+}
+.google-login-btn{
+    border: none;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    
+}

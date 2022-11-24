@@ -1,12 +1,11 @@
-import { TextField } from '@mui/material';
 import React from 'react';
+import { FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import googleImg from '../../Assets/Logo/google.png'
 import login from '../../Assets/login.svg';
-import './Login.css'
-const Login = () => {
+const Register = () => {
     const { register, handleSubmit } = useForm();
-    const handleLogin = (data) => {
+    const handleRegister = (data) => {
         console.log(data)
     }
     return (
@@ -17,12 +16,27 @@ const Login = () => {
                         <img src={login} className="img-fluid w-100" alt="" />
                     </div>
                     <div className="col-lg-4 login-field ">
-                        <div className="signup-form py-5">
-                            <form onSubmit={handleSubmit((data) => handleLogin(data))}>
-                                <h3 className='text-center'>Login</h3>
+                        <div className="signup-form">
+                            <form onSubmit={handleSubmit((data) => handleRegister(data))}>
+                                <h3 className='text-center'>Sign Up</h3>
                                 <div className='my-3'>
                                     <TextField {...register("email")} className='w-100' id="outlined-basic" label="Your Email " variant="outlined" />
                                 </div>
+                                <div className='my-3'>
+                                    <TextField {...register("name")} className='w-100' id="outlined-basic" label="Your Name" variant="outlined" />
+                                </div>
+                                <FormControl fullWidth>
+                                    <InputLabel id="demo-simple-select-label">Account Type</InputLabel>
+                                    <Select onChange={(e)=>handleRegister(e.target.value)} {...register("accountType")}
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        label="Account-Type"
+                                     
+                                    >
+                                        <MenuItem value={"seller"}>Seller</MenuItem>
+                                        <MenuItem value={"buyer"} selected>Buyer</MenuItem>
+                                    </Select>
+                                </FormControl>
                                 <div className='my-3'>
                                     <TextField {...register("password")} className='w-100' id="outlined-basic" label="Your Password " variant="outlined" />
                                 </div>
@@ -42,4 +56,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;
