@@ -3,6 +3,7 @@ import MainLayout from "../Layout/MainLayout/MainLayout";
 import DisplayCars from "../Pages/DisplayCars/DisplayCars";
 import ErrorPage from "../Pages/Errorpage/ErrorPage";
 import Home from "../Pages/HomePage/Home/Home";
+import Login from "../Pages/Login/Login";
 
 const router = createBrowserRouter([
     {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
             {
                 path:'/category/:name',
                 element:<DisplayCars></DisplayCars>
+            },
+            {
+                path:'/login',
+                element:<Login></Login>
             }
         ]
 

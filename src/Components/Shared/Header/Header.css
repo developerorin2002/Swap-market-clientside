@@ -1,3 +1,10 @@
+
+.custom-nav a{
+    text-decoration: none;
+    color: #434140;
+    font-size: 18px;
+    margin-right: 10px;
+}
 .logo-car{
     height: 50px;
     width: 50px;
@@ -6,3 +13,29 @@
     color: #FF3811;
     font-weight: bold;
 }
+.avatar img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+
+}
+.logout-btn{
+    padding: 10px 15px;
+    border: none;
+    background-color: #FF3811;
+    font-size: 20px;
+    color: #fff;
+}
+
+.avatar{
+    margin-right: 10px;
+}
+
+
+
+
+
+
+
+
+
