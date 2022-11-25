@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Container, Nav, Navbar} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import car from '../../Assets/Logo/car.png';
 import { FaSignOutAlt } from 'react-icons/fa';
-import avatar from '../../Assets/Logo/user.png'
 import './Header.css'
+import { AuthContext } from '../../AuthProvider/AuthProvider';
+import toast from 'react-hot-toast';
 const Header = () => {
+    const {user,logOut} = useContext(AuthContext);
+    const handleLogOut =() =>{
+        logOut()
+        .then(res=>{
+            toast.success('Log Out Successfully')
+        })
+        .catch(err=>{
+            toast.error(`${err}`)
+        })
+    }
     return (
         <div>
             <Navbar bg="light" expand="lg">
@@ -19,18 +30,20 @@ const Header = () => {
                     <Navbar.Collapse id="basic-navbar-nav ">
                         <Nav className="mx-auto custom-nav align-items-center">
                             <Link to='/home'>Home</Link>
-                            <Link to='/category'>Category</Link>
                             <Link to='/login'>Login</Link>
                             <Link to='/register'>Register</Link>
-                            <Link to='/myorder'>My Order</Link>
-                            <Link to='/addproduct'>Add A Product</Link>
-                            <Link to='/allseller'>All seller</Link>
-                            <Link to='/allbuyers'>All Buyers</Link>
+                            {
+                                user?.email && user?.uid && <Link to='/myorder'>My Order</Link>
+                            }
                             <div className='user-profile d-flex align-items-center'>
                                 <div className="avatar">
-                                    <img src={avatar} alt="" />
+                                    {
+                                        user?.email && user?.uid && <img src={user.photoURL} alt="" />
+                                    }
                                 </div>
-                                <button className='logout-btn'>Logout <span className='mx-2'><FaSignOutAlt/></span> </button>
+                               {
+                                user?.email && user.uid &&  <button onClick={handleLogOut} className='logout-btn'>Logout <span className='mx-2'><FaSignOutAlt/></span> </button>
+                               }
                             </div>
                         </Nav>
                     </Navbar.Collapse>

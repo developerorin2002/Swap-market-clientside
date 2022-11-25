@@ -1,13 +1,23 @@
 import { TextField } from '@mui/material';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import googleImg from '../../Assets/Logo/google.png'
 import login from '../../Assets/login.svg';
 import './Login.css'
+import { AuthContext } from '../../AuthProvider/AuthProvider';
+import toast from 'react-hot-toast';
 const Login = () => {
+    const {userLogin} = useContext(AuthContext)
     const { register, handleSubmit } = useForm();
     const handleLogin = (data) => {
-        console.log(data)
+        const email = data.email;
+        const password = data.password;
+        userLogin(email,password)
+        .then(res=>{
+            toast.success('login successfull')
+            console.log(res.user)
+        })
+        .catch(err=>toast.error(`${err}`))
     }
     return (
         <div>

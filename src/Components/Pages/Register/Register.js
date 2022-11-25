@@ -25,6 +25,11 @@ const Register = () => {
         // register account 
         handleRegistration(email, password)
             .then(res => {
+                fetch(`http://localhost:5000/jwt?email=${res.user.email}`)
+                .then(res=>res.json())
+                .then(token=>{
+                    localStorage.setItem('token',token.token);
+                })
                 // host image in img bb
                 fetch(`https://api.imgbb.com/1/upload?key=${imgBBSecret}`, {
                     method: 'POST',
@@ -34,6 +39,7 @@ const Register = () => {
                     .then(data => {
                         // update profile
                         const photoUrl = data.data.image.url;
+
                         updateUserProfile(name, photoUrl)
                             .then(res => {
                                 // save user in database
@@ -52,6 +58,7 @@ const Register = () => {
                                 })
                                     .then(res => res.json())
                                     .then(data => {
+                                        
                                         toast.success('user created successfully')
                                     })
                             })
@@ -76,22 +83,22 @@ const Register = () => {
                             <form onSubmit={handleSubmit((data) => handleRegister(data))}>
                                 <h3 className='text-center py-2'>Sign Up</h3>
                                 <div className='my-3'>
-                                    <TextField type="email" {...register("email")} className='w-100' id="outlined-basic" label="Your Email " variant="outlined" />
+                                    <TextField required type="email" {...register("email")} className='w-100' id="outlined-basic" label="Your Email " variant="outlined" />
                                 </div>
                                 <div className='my-3'>
-                                    <TextField {...register("name")} className='w-100' id="outlined-basic" label="Your Name" variant="outlined" />
+                                    <TextField required {...register("name")} className='w-100' id="outlined-basic" label="Your Name" variant="outlined" />
                                 </div>
 
-                                <select {...register("account")} className="form-select" aria-label="Default select example">
+                                <select required {...register("account")} className="form-select" aria-label="Default select example">
                                     <option value="seller">Seller</option>
                                     <option selected value="buyer">Buyer</option>
                                 </select>
 
                                 <div className='my-3'>
-                                    <TextField type="password" {...register("password")} className='w-100' id="outlined-basic" label="Your Password " variant="outlined" />
+                                    <TextField required type="password" {...register("password")} className='w-100' id="outlined-basic" label="Your Password " variant="outlined" />
                                 </div>
                                 <div className='my-3'>
-                                    <TextField type="file" {...register("photo")} className='w-100' id="outlined-basic" variant="outlined" />
+                                    <TextField required type="file" {...register("photo")} className='w-100' id="outlined-basic" variant="outlined" />
                                 </div>
                                 <input className='login-btn w-100' type="submit" />
                             </form>

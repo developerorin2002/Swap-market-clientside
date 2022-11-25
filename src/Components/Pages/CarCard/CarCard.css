@@ -1,0 +1,42 @@
+
+.car-body{
+    border: 1px solid #eaeaea;
+}
+.car-image img{
+    height: 200px;
+}
+.price-section>p{
+    font-size: 20px;
+    text-transform: capitalize;
+}
+.resale-p{
+    color: #FF3811;
+}
+.book-now-btn{
+    background-color: rgb(53, 100, 255);
+    border: none;
+    font-size: 20px;
+    color: #fff;
+    padding: 10px 15px;
+    margin: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

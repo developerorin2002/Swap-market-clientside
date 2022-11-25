@@ -4,7 +4,9 @@ import DisplayCars from "../Pages/DisplayCars/DisplayCars";
 import ErrorPage from "../Pages/Errorpage/ErrorPage";
 import Home from "../Pages/HomePage/Home/Home";
 import Login from "../Pages/Login/Login";
+import MyOrder from "../Pages/MyOrder/MyOrder";
 import Register from "../Pages/Register/Register";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -21,8 +23,9 @@ const router = createBrowserRouter([
                 element:<Home></Home>
             },
             {
-                path:'/category/:name',
-                element:<DisplayCars></DisplayCars>
+                path:'/category/:category',
+                loader:({params})=>fetch(`http://localhost:5000/allcars/${params.category}`),
+                element:<PrivateRoute><DisplayCars></DisplayCars></PrivateRoute>
             },
             {
                 path:'/login',
@@ -31,6 +34,10 @@ const router = createBrowserRouter([
             {
                 path:'/register',
                 element:<Register></Register>
+            },
+            {
+                path:'/myorder',
+                element:<PrivateRoute><MyOrder></MyOrder></PrivateRoute>
             }
         ]
 
