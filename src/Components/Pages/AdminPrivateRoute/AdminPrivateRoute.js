@@ -3,11 +3,11 @@ import { Box } from '@mui/system';
 import React, { useContext } from 'react';
 import { Navigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
-import UseSeller from '../Utilities/UseSeller/UseSeller';
+import UseAdmin from '../Utilities/UseAdmin/UseAdmin';
 
-const SellerPrivateRoute = ({children}) => {
+const AdminPrivateRoute = ({children}) => {
     const { user, loading } = useContext(AuthContext);
-    const [isSeller,isloading ] = UseSeller(user?.email)
+    const [isAdmin, isAdminLoading] = UseAdmin(user?.email)
     const [progress, setProgress] = React.useState(0);
     React.useEffect(() => {
         const timer = setInterval(() => {
@@ -25,17 +25,17 @@ const SellerPrivateRoute = ({children}) => {
         };
     }, []);
 
-    if (loading || isloading) {
+    if (loading || isAdminLoading) {
         return (<Box sx={{ width: '100%' }}>
             <LinearProgress variant="determinate" value={progress} />
         </Box>
         )
     }
 
-    if (isSeller) {
+    if (isAdmin) {
         return children;
     }
     return <Navigate to="/login"></Navigate>
 };
 
-export default SellerPrivateRoute;
+export default AdminPrivateRoute;

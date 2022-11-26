@@ -5,16 +5,16 @@ import googleImg from '../../Assets/Logo/google.png'
 import login from '../../Assets/login.svg';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 
 const Register = () => {
     const { handleRegistration, updateUserProfile } = useContext(AuthContext);
     const { register, handleSubmit } = useForm();
     const imgBBSecret = process.env.REACT_APP_IMGBB;
-
+    const navigate = useNavigate();
     const handleRegister = (data) => {
-
-        console.log(data)
+        
         const name = data.name;
         const email = data.email;
         const password = data.password;
@@ -60,8 +60,11 @@ const Register = () => {
                                     .then(res => res.json())
                                     .then(data => {
                                         
-                                        toast.success('user created successfully')
-                                        
+                                        toast.success('Register successfully')
+                                        //navigate to dashboard 
+                                        navigate('/dashboard')
+
+
                                     })
                             })
                             .catch(err => console.log(err))
