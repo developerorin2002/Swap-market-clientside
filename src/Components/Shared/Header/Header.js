@@ -32,6 +32,7 @@ const Header = () => {
                             <Link to='/home'>Home</Link>
                             <Link to='/login'>Login</Link>
                             <Link to='/register'>Register</Link>
+                            <Link to='/blogs'>Blogs</Link>
                             
                             {
                                 user?.email && user?.uid && <Link to='/dashboard'>Dashboard</Link>

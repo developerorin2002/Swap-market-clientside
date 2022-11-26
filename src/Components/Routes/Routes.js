@@ -5,6 +5,7 @@ import AddProduct from "../Pages/AddProduct/AddProduct";
 import AdminPrivateRoute from "../Pages/AdminPrivateRoute/AdminPrivateRoute";
 import AllBuyers from "../Pages/AllBuyes/AllBuyers";
 import AllSeller from "../Pages/AllSeller/AllSeller";
+import Blogs from "../Pages/Blogs/Blogs";
 import BuyerPrivateRoute from "../Pages/BuyerPrivateRoute/BuyerPrivateRoute";
 import DisplayCars from "../Pages/DisplayCars/DisplayCars";
 import ErrorPage from "../Pages/Errorpage/ErrorPage";
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
             {
                 path:'/',
                 element:<Home></Home>
+            },
+            {
+                path:'/blogs',
+                element:<Blogs></Blogs>
             },
             {
                 path:'/home',

@@ -9,12 +9,12 @@ import { useNavigate } from 'react-router-dom';
 
 
 const Register = () => {
-    const { handleRegistration, updateUserProfile } = useContext(AuthContext);
+    const { handleRegistration, updateUserProfile, handleGoogleRegister } = useContext(AuthContext);
     const { register, handleSubmit } = useForm();
     const imgBBSecret = process.env.REACT_APP_IMGBB;
     const navigate = useNavigate();
     const handleRegister = (data) => {
-        
+
         const name = data.name;
         const email = data.email;
         const password = data.password;
@@ -27,10 +27,10 @@ const Register = () => {
         handleRegistration(email, password)
             .then(res => {
                 fetch(`http://localhost:5000/jwt?email=${res.user.email}`)
-                .then(res=>res.json())
-                .then(token=>{
-                    localStorage.setItem('token',token.token);
-                })
+                    .then(res => res.json())
+                    .then(token => {
+                        localStorage.setItem('token', token.token);
+                    })
                 // host image in img bb
                 fetch(`https://api.imgbb.com/1/upload?key=${imgBBSecret}`, {
                     method: 'POST',
@@ -59,7 +59,7 @@ const Register = () => {
                                 })
                                     .then(res => res.json())
                                     .then(data => {
-                                        
+
                                         toast.success('Register successfully')
                                         //navigate to dashboard 
                                         navigate('/dashboard')
@@ -75,6 +75,42 @@ const Register = () => {
             .catch(err => console.log(err))
 
 
+    };
+    const googleRegister = () => {
+        handleGoogleRegister()
+            .then(res => {
+                fetch(`http://localhost:5000/jwt?email=${res.user.email}`)
+                    .then(res => res.json())
+                    .then(token => {
+                        localStorage.setItem('token', token.token);
+                        const user = {
+                            name: res.user.displayName,
+                            email: res.user.email,
+                            role: 'buyer',
+                            image:res.user.photoURL,
+                        };
+                        fetch('http://localhost:5000/users', {
+                                    method: 'POST',
+                                    headers: {
+                                        'content-type': 'application/json'
+                                    },
+                                    body: JSON.stringify(user)
+                                })
+                                    .then(res => res.json())
+                                    .then(data => {
+
+                                        toast.success('Register successfully')
+                                        //navigate to dashboard 
+                                        navigate('/dashboard')
+
+
+                                    })
+                        
+                });
+                
+                
+            })
+            .catch(err=>toast.error(err))
     }
     return (
         <div>
@@ -110,7 +146,7 @@ const Register = () => {
                             <div className='mt-2'>
                                 <p className='text-center'>Or Sign In With</p>
                                 <div className='text-center py-2'>
-                                    <button className='google-login-btn'><img src={googleImg} className='google-login' alt="" /></button>
+                                    <button className='google-login-btn' onClick={googleRegister} ><img src={googleImg} className='google-login' alt="" /></button>
                                 </div>
                             </div>
                         </div>

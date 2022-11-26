@@ -7,7 +7,7 @@ import './Login.css'
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import toast from 'react-hot-toast';
 const Login = () => {
-    const { userLogin } = useContext(AuthContext)
+    const { userLogin,handleGoogleSignIn } = useContext(AuthContext)
     const { register, handleSubmit } = useForm();
     const handleLogin = (data) => {
         const email = data.email;
@@ -23,6 +23,19 @@ const Login = () => {
 
             })
             .catch(err => toast.error(`${err}`))
+    };
+    
+    const handleGoogleLogin = () =>{
+        handleGoogleSignIn()
+        .then(res=>{
+            fetch(`http://localhost:5000/jwt?email=${res.user.email}`)
+                    .then(res => res.json())
+                    .then(token => {
+                        localStorage.setItem('token', token.token);
+                    });
+            toast.success('Login Successfully')
+        })
+        .catch(err=>toast.error(err))
     }
     return (
         <div>
@@ -46,7 +59,7 @@ const Login = () => {
                             <div className='mt-2'>
                                 <p className='text-center'>Or Sign In With</p>
                                 <div className='text-center'>
-                                    <button className='google-login-btn'><img src={googleImg} className='google-login' alt="" /></button>
+                                    <button className='google-login-btn' onClick={handleGoogleLogin}><img src={googleImg} className='google-login' alt="" /></button>
                                 </div>
                             </div>
                         </div>
