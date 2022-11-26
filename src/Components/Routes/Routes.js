@@ -46,11 +46,8 @@ const router = createBrowserRouter([
             {
                 path:'/myorder',
                 element:<PrivateRoute><MyOrder></MyOrder></PrivateRoute>
-            },
-            {
-                path:'/dashboard/myproduct',
-                element:<SellerPrivateRoute><MyProduct></MyProduct></SellerPrivateRoute>
             }
+            
             
         ]
 
@@ -78,6 +75,10 @@ const router = createBrowserRouter([
             {
                 path:'/dashboard/allbuyer',
                 element:<AdminPrivateRoute><AllBuyers></AllBuyers></AdminPrivateRoute>
+            },
+            {
+                path:'/dashboard/myproduct',
+                element:<SellerPrivateRoute><MyProduct></MyProduct></SellerPrivateRoute>
             }
         ]
 

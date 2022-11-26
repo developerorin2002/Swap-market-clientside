@@ -8,7 +8,7 @@ import Footer from '../../Shared/Footer/Footer';
 import Header from '../../Shared/Header/Header';
 import './DashboardLayout.css'
 const DashboardLayout = () => {
-    const {user} = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
     const [isSeller] = UseSeller(user?.email);
     const [isAdmin] = UseAdmin(user?.email);
     const [isBuyer] = UseBuyerHook(user?.email);
@@ -23,21 +23,21 @@ const DashboardLayout = () => {
                 <div className="row">
                     <div className="col-lg-3">
                         <div className='dashboard-nav py-5 text-center'>
-                       {
-                        isSeller &&  <Link to="/dashboard/addproduct">Addproduct</Link>
-                       }
-                       {
-                        isBuyer && <Link to="/dashboard/myorder">myorder</Link>
-                       }
-                       {
-                        isAdmin &&  <Link to="/dashboard/allseller">All Seller</Link>
-                       }
-                       {
-                        isAdmin &&  <Link to="/dashboard/allbuyer">All Buyer</Link>
-                       }
-                       {
-                        isSeller &&  <Link to="/dashboard/myproduct">My Product</Link>
-                       }
+                            {
+                                isSeller && <Link to="/dashboard/addproduct">Addproduct</Link>
+                            }
+                            {
+                                isBuyer && <Link to="/dashboard/myorder">myorder</Link>
+                            }
+                            {
+                                isAdmin && <Link to="/dashboard/allseller">All Seller</Link>
+                            }
+                            {
+                                isAdmin && <Link to="/dashboard/allbuyer">All Buyer</Link>
+                            }
+                            {
+                                isSeller && <Link to="/dashboard/myproduct">My Product</Link>
+                            }
                         </div>
                     </div>
                     <div className="col-lg-9">
