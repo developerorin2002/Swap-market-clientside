@@ -6,6 +6,7 @@ import login from '../../Assets/login.svg';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import toast from 'react-hot-toast';
 
+
 const Register = () => {
     const { handleRegistration, updateUserProfile } = useContext(AuthContext);
     const { register, handleSubmit } = useForm();
@@ -60,6 +61,7 @@ const Register = () => {
                                     .then(data => {
                                         
                                         toast.success('user created successfully')
+                                        
                                     })
                             })
                             .catch(err => console.log(err))

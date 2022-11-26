@@ -7,17 +7,22 @@ import './Login.css'
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import toast from 'react-hot-toast';
 const Login = () => {
-    const {userLogin} = useContext(AuthContext)
+    const { userLogin } = useContext(AuthContext)
     const { register, handleSubmit } = useForm();
     const handleLogin = (data) => {
         const email = data.email;
         const password = data.password;
-        userLogin(email,password)
-        .then(res=>{
-            toast.success('login successfull')
-            console.log(res.user)
-        })
-        .catch(err=>toast.error(`${err}`))
+        userLogin(email, password)
+            .then(res => {
+                fetch(`http://localhost:5000/jwt?email=${res.user.email}`)
+                    .then(res => res.json())
+                    .then(token => {
+                        localStorage.setItem('token', token.token);
+                    });
+                toast.success('login successfull')
+
+            })
+            .catch(err => toast.error(`${err}`))
     }
     return (
         <div>

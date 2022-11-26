@@ -32,8 +32,9 @@ const Header = () => {
                             <Link to='/home'>Home</Link>
                             <Link to='/login'>Login</Link>
                             <Link to='/register'>Register</Link>
+                            
                             {
-                                user?.email && user?.uid && <Link to='/myorder'>My Order</Link>
+                                user?.email && user?.uid && <Link to='/dashboard'>Dashboard</Link>
                             }
                             <div className='user-profile d-flex align-items-center'>
                                 <div className="avatar">

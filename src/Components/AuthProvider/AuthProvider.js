@@ -9,6 +9,7 @@ const AuthProvider = ({children}) => {
     const [loading,setLoading] = useState(true);
     // handle registration
     const handleRegistration = (email,password) =>{
+        setLoading(true)
         return createUserWithEmailAndPassword(auth,email,password)
     };
     // update profile
@@ -20,10 +21,12 @@ const AuthProvider = ({children}) => {
     };
     // login user 
     const userLogin = (email,password) =>{
+        setLoading(true)
         return signInWithEmailAndPassword(auth,email,password)
     }
     // logout user 
     const logOut = ()=>{
+        
         return signOut(auth)
     }
 
