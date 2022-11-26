@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import ProductCard from '../ProductCard/ProductCard';
 
@@ -27,6 +28,25 @@ const MyProduct = () => {
             console.log(res)
             refetch();
         })
+    };
+    // handle advertisement
+    const handleAdvertise =(id) =>{
+        console.log(id)
+        fetch(`http://localhost:5000/advertise?id=${id}`,{
+            method:'POST',
+        })
+        .then(res=>res.json())
+        .then(res=>{
+            toast.success('Advertise Item Successfully');
+            // update status on my product
+            fetch(`http://localhost:5000/advertise?id=${id}`,{
+                method:'PUT'
+            })
+            .then(res=>res.json())
+            .then(data=>{
+                refetch();
+            })
+        })
     }
     return (
         <div>
@@ -34,7 +54,7 @@ const MyProduct = () => {
             <div className="container">
                 <div className="row gy-3">
                     {
-                        myProducts.map(product => <ProductCard deleteProduct={deleteProduct} key={product._id} product={product}></ProductCard>)
+                        myProducts.map(product => <ProductCard handleAdvertise={handleAdvertise} deleteProduct={deleteProduct} key={product._id} product={product}></ProductCard>)
                     }
                 </div>
             </div>

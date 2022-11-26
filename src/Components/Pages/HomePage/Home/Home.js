@@ -1,4 +1,5 @@
 import React from 'react';
+import Advertise from '../Advertise/Advertise';
 import HomeCategory from '../HomeCategory/HomeCategory';
 import './Home.css'
 const Home = () => {
@@ -19,6 +20,9 @@ const Home = () => {
             </div>
             <div className='my-3'>
                 <HomeCategory></HomeCategory>
+            </div>
+            <div className='my-3'>
+               <Advertise></Advertise>
             </div>
         </div>
     );

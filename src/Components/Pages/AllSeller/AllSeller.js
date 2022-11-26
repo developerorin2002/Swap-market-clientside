@@ -1,9 +1,10 @@
 import React from 'react';
 
 const AllSeller = () => {
+    
     return (
         <div>
-            <h2>All Seller</h2>
+            <h2 className='text-center'>All Seller</h2>
         </div>
     );
 };
