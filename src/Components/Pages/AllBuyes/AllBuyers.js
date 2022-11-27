@@ -27,18 +27,19 @@ const AllBuyers = () => {
             toast.success('user delete successfully');
             refetch();
         })
-    }
+    };
     return (
         <div>
             <h2 className='text-center'>All Buyer </h2>
             <Table striped bordered hover className='my-5'>
                 <thead>
                     <tr>
-                        <th>Serial Number</th>
-                        <th>Seller Name </th>
-                        <th>Seller Email</th>
-                        <th>Seller Number</th>
-                        <th>Action</th>
+                        <th className='text-center'>Serial Number</th>
+                        <th className='text-center'>Seller Name </th>
+                        <th className='text-center'>Seller Email</th>
+                        <th className='text-center'>Seller Image</th>
+                        <th className='text-center'>Action</th>
+                        
                     </tr>
                 </thead>
                 <tbody>

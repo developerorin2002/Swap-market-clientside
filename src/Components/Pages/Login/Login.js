@@ -28,6 +28,7 @@ const Login = () => {
     const handleGoogleLogin = () =>{
         handleGoogleSignIn()
         .then(res=>{
+            console.log(res.user)
             fetch(`http://localhost:5000/jwt?email=${res.user.email}`)
                     .then(res => res.json())
                     .then(token => {

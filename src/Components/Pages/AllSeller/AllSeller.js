@@ -26,6 +26,17 @@ const AllSeller = () => {
             toast.success('user delete successfully');
             refetch();
         })
+    };
+    const handleVerify = (id) =>{
+        fetch(`http://localhost:5000/verifyseller/${id}`,{
+            method:'PUT'
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            toast.success('user verified')
+            console.log(data)
+            refetch();
+        })
     }
     return (
         <div>
@@ -38,6 +49,7 @@ const AllSeller = () => {
                         <th>Seller Email</th>
                         <th>Seller Number</th>
                         <th>Action</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -49,6 +61,7 @@ const AllSeller = () => {
                             <td>{user.email}</td>
                             <td className='text-center'><img src={user.image} className="w-25" alt="" /></td>
                             <td ><button className='btn btn-danger text-center my-3' onClick={()=>handleDelete(user._id)}>delete</button></td>
+                            <td >{user?.verified ?<><button className='btn btn-success my-3'>verified</button></>:<><button className='btn btn-success text-center my-3' onClick={()=>handleVerify(user._id)}>Verify</button></> }</td>
                         </tr>)
                     }
 

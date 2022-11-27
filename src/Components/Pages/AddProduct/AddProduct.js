@@ -5,6 +5,7 @@ import { AuthContext } from '../../AuthProvider/AuthProvider';
 import product from '../../Assets/CarImage/product.svg'
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
 
 const AddProduct = () => {
     let newDate = new Date()
@@ -16,6 +17,16 @@ const AddProduct = () => {
     const { register, handleSubmit } = useForm();
     const imageKey = process.env.REACT_APP_IMGBB;
   
+    // check user verified or not 
+    const {data:isVerified} = useQuery({
+        queryKey:['verified'],
+        queryFn:async()=>{
+            const res = await fetch(`http://localhost:5000/verifiedseller?email=${user?.email}`);
+            const data = await res.json();
+            return data;
+        }
+    })
+
     const handleAddProduct = (data) => {
         const image = data.photo[0];
         const formData = new FormData();
@@ -38,9 +49,10 @@ const AddProduct = () => {
                 location: data.location,
                 postingDate:`${date}.${month}.${year}`,
                 category:data.category,
-                email:`${user?.email}`
-    
+                email:`${user?.email}`,
+                verifyStatus:isVerified.verified
             };
+            console.log(product)
             fetch('http://localhost:5000/uploadcar',{
                 method:'POST',
                 headers:{

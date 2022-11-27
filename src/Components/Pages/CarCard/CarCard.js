@@ -1,9 +1,9 @@
 import { Button } from '@mui/material';
 import React from 'react';
 import './CarCard.css'
-
+import { FaTimesCircle ,FaCheckCircle} from "react-icons/fa";
 const CarCard = ({car,handleOpen}) => {
-    const {image,location,resalePrice,model,name,originalPrice,postingDate,sellerName,uses} = car;
+    const {image,location,resalePrice,model,name,originalPrice,postingDate,sellerName,uses,verifyStatus} = car;
     return (
         <div className='col-lg-4'>
             <div className="car-body">
@@ -23,6 +23,9 @@ const CarCard = ({car,handleOpen}) => {
                     <p>posting date : {postingDate}</p>
                     <p>Seller Name : {sellerName}</p>
                     <p>location : {location}</p>
+                    {
+                        verifyStatus ? <><p className='text-success'>Seller-Type : verified <FaCheckCircle/></p></>:<><p className='text-danger'>Seller-Type : Not verified <FaTimesCircle/> </p></>
+                    }
                 </div>
                 
                 <Button className='book-now-btn' onClick={()=>handleOpen(car)}>Book Now</Button>
