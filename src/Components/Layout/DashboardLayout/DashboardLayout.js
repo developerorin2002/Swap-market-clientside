@@ -38,6 +38,9 @@ const DashboardLayout = () => {
                             {
                                 isSeller && <Link to="/dashboard/myproduct">My Product</Link>
                             }
+                            {
+                                isAdmin && <Link to="/dashboard/reported">Reported Items</Link>
+                            }
                         </div>
                     </div>
                     <div className="col-lg-9">

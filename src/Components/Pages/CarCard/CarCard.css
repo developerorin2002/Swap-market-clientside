@@ -20,7 +20,10 @@
     padding: 10px 15px;
     margin: 10px;
 }
-
+.wishlist-btn{
+    border: none;
+    padding: 5px;
+}
 
 
 

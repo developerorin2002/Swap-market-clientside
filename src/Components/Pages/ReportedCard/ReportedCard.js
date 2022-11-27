@@ -1,11 +1,11 @@
-import { Button } from '@mui/material';
 import React from 'react';
-import './CarCard.css'
-import { FaTimesCircle, FaCheckCircle,FaBan } from "react-icons/fa";
-const CarCard = ({ car, handleOpen,reportedItems }) => {
-    const {_id, image, location, resalePrice, model, name, originalPrice, postingDate, sellerName, uses, verifyStatus } = car;
+import { Button } from 'react-bootstrap';
+
+const ReportedCard = ({reportedItem,handleProductDelete}) => {
+   
+    const {_id, image, location, resalePrice, model, name, originalPrice, postingDate, sellerName, uses } = reportedItem;
     return (
-        <div className='col-lg-4'>
+        <div className='col-lg-6'>
             <div className="car-body">
                 <div className="car-image">
                     <img src={image} className="w-100 img-fluid" alt="" />
@@ -23,19 +23,11 @@ const CarCard = ({ car, handleOpen,reportedItems }) => {
                     <p>posting date : {postingDate}</p>
                     <p>Seller Name : {sellerName}</p>
                     <p>location : {location}</p>
-
                 </div>
-                <div className='d-flex align-items-center justify-content-between px-3'>
-                    {
-                        verifyStatus ? <><p className='text-success'>Seller-Type : verified <FaCheckCircle /></p></> : <><p className='text-danger'>Seller-Type : Not verified <FaTimesCircle /> </p></>
-                    }
-                    <button onClick={()=>reportedItems(_id)} className='wishlist-btn'>Report<FaBan/></button>
-                </div>
-
-                <Button className='book-now-btn' onClick={() => handleOpen(car)}>Book Now</Button>
+                <Button onClick={()=>handleProductDelete(_id)} className='book-now-btn btn-danger' >Delete Order</Button>
             </div>
         </div>
     );
 };
 
-export default CarCard;
+export default ReportedCard;

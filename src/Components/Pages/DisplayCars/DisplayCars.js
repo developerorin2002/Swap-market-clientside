@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import toast from 'react-hot-toast';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import CarCard from '../CarCard/CarCard';
@@ -16,12 +17,22 @@ const DisplayCars = () => {
     const handleClose = () => {
       setOpen(false);
     };
+    const reportedItems = (id) =>{
+        fetch(`http://localhost:5000/reported/${id}`,{
+            method:'POST'
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            toast.success('Reported To Admin')
+        })
+    }
     return (
         <div>
             <div className="container g-3">
-                <div className="row">
+                <h3 className='text-center'>Matched Car </h3>
+                <div className="row g-4">
                     {
-                        cars.map(car=><CarCard setOpen={setOpen} open={open} handleClose={handleClose} handleOpen={handleOpen} key={car._id} car={car}></CarCard>)
+                        cars.map(car=><CarCard reportedItems={reportedItems} setOpen={setOpen} open={open} handleClose={handleClose} handleOpen={handleOpen} key={car._id} car={car}></CarCard>)
                     }
                 </div>
             </div>

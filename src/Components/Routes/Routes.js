@@ -14,6 +14,7 @@ import Login from "../Pages/Login/Login";
 import MyOrder from "../Pages/MyOrder/MyOrder";
 import MyProduct from "../Pages/MyProduct/MyProduct";
 import Register from "../Pages/Register/Register";
+import ReportedItems from "../Pages/ReportedItems/ReportedItems";
 import SellerPrivateRoute from "../Pages/SellerPrivateRoute/SellerPrivateRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
@@ -38,7 +39,7 @@ const router = createBrowserRouter([
             {
                 path:'/category/:category',
                 loader:({params})=>fetch(`http://localhost:5000/allcars/${params.category}`),
-                element:<BuyerPrivateRoute><DisplayCars></DisplayCars></BuyerPrivateRoute>
+                element:<PrivateRoute><DisplayCars></DisplayCars></PrivateRoute>
             },
             {
                 path:'/login',
@@ -72,6 +73,10 @@ const router = createBrowserRouter([
             {
                 path:'/dashboard/myorder',
                 element:<BuyerPrivateRoute><MyOrder></MyOrder></BuyerPrivateRoute>
+            },
+            {
+                path:'/dashboard/reported',
+                element:<AdminPrivateRoute> <ReportedItems></ReportedItems></AdminPrivateRoute>
             },
             {
                 path:'/dashboard/allseller',
