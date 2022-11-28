@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import './ProductCard.css'
 const ProductCard = ({ product, deleteProduct,handleAdvertise }) => {
-    const { _id, image, model, name, postingDate ,status,advertise} = product;
+    const { _id, image, model, name, postingDate ,advertise,paid} = product;
     return (
         <div className='col-lg-6'>
             <div className="car-body">
@@ -21,7 +21,7 @@ const ProductCard = ({ product, deleteProduct,handleAdvertise }) => {
                 <div className='d-flex align-items-center justify-content-between'>
                     <Button className='book-now-btn' onClick={() => deleteProduct(_id)}>Delete</Button>
                    {
-                    status ? <p className='mx-2 mb-0 px-2 available-text text-success'>Sold</p>: <p className='mx-2 mb-0 px-2 available-text text-danger'>Unsold</p>
+                    paid ? <><p className='mx-2 mb-0 px-2 available-text text-success'>Sold</p></>:<p className='mx-2 mb-0 px-2 available-text text-danger'>Unsold</p>
                    }
                 </div>
                 <div>

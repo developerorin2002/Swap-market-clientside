@@ -13,6 +13,7 @@ import Home from "../Pages/HomePage/Home/Home";
 import Login from "../Pages/Login/Login";
 import MyOrder from "../Pages/MyOrder/MyOrder";
 import MyProduct from "../Pages/MyProduct/MyProduct";
+import Payment from "../Pages/Payment/Payment";
 import Register from "../Pages/Register/Register";
 import ReportedItems from "../Pages/ReportedItems/ReportedItems";
 import SellerPrivateRoute from "../Pages/SellerPrivateRoute/SellerPrivateRoute";
@@ -76,7 +77,7 @@ const router = createBrowserRouter([
             },
             {
                 path:'/dashboard/reported',
-                element:<AdminPrivateRoute> <ReportedItems></ReportedItems></AdminPrivateRoute>
+                element:<AdminPrivateRoute><ReportedItems></ReportedItems></AdminPrivateRoute>
             },
             {
                 path:'/dashboard/allseller',
@@ -89,6 +90,11 @@ const router = createBrowserRouter([
             {
                 path:'/dashboard/myproduct',
                 element:<SellerPrivateRoute><MyProduct></MyProduct></SellerPrivateRoute>
+            },
+            {
+                path:'/dashboard/payment/:id',
+                loader:({params})=>fetch(`http://localhost:5000/myorders/${params.id}`),
+                element:<BuyerPrivateRoute><Payment></Payment></BuyerPrivateRoute>
             }
         ]
 

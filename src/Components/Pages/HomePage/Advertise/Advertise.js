@@ -16,13 +16,13 @@ const Advertise = () => {
         <div>
             <h3 className='text-center py-2' >Advertised Product</h3>
             {
-                advertiseProduct.length <= 2 ?
+                advertiseProduct.length >= 2 ?
 
                     <>
                         <div className="container">
                             <div className="row">
                                 {
-                                    advertiseProduct.map(product => <AdvertiseCard product={product} key={product._id}></AdvertiseCard>)
+                                    advertiseProduct.map(product => {return product.paid ? <></>:<AdvertiseCard product={product} key={product._id}></AdvertiseCard>})
                                 }
                             </div>
                         </div>

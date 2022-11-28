@@ -28,8 +28,10 @@ const BookingModal = ({ open, setOpen, handleClose, handleOpen, carInfo, user })
             location:data.location,
             phone:data.phone,
             price:data.price,
-            image:carInfo.image
+            image:carInfo.image,
+            productId:carInfo._id
         };
+        
         fetch('http://localhost:5000/order',{
             method:'POST',
             headers:{
