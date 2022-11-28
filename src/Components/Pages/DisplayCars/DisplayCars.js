@@ -18,13 +18,13 @@ const DisplayCars = () => {
       setOpen(false);
     };
     const reportedItems = (id) =>{
-        fetch(`http://localhost:5000/reported/${id}`,{
+        fetch(`https://swap-market-server.vercel.app/reported/${id}`,{
             method:'POST'
         })
         .then(res=>res.json())
         .then(data=>{
             
-            fetch(`http://localhost:5000/reportedproduct/${id}`,{
+            fetch(`https://swap-market-server.vercel.app/reportedproduct/${id}`,{
                 method:'PUT'
             })
             .then(res=>res.json())

@@ -16,7 +16,7 @@ const Login = () => {
         const password = data.password;
         userLogin(email, password)
             .then(res => {
-                fetch(`http://localhost:5000/jwt?email=${res.user.email}`)
+                fetch(`https://swap-market-server.vercel.app/jwt?email=${res.user.email}`)
                     .then(res => res.json())
                     .then(token => {
                         localStorage.setItem('token', token.token);
@@ -32,7 +32,7 @@ const Login = () => {
     const handleGoogleLogin = () =>{
         handleGoogleSignIn()
         .then(res => {
-            fetch(`http://localhost:5000/jwt?email=${res.user.email}`)
+            fetch(`https://swap-market-server.vercel.app/jwt?email=${res.user.email}`)
                 .then(res => res.json())
                 .then(token => {
                     localStorage.setItem('token', token.token);
@@ -42,7 +42,7 @@ const Login = () => {
                         role: 'buyer',
                         image:res.user.photoURL,
                     };
-                    fetch('http://localhost:5000/users', {
+                    fetch('https://swap-market-server.vercel.app/users', {
                                 method: 'POST',
                                 headers: {
                                     'content-type': 'application/json'

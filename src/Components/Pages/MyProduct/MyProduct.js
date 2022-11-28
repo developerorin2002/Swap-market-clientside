@@ -10,7 +10,7 @@ const MyProduct = () => {
     const { data: myProducts = [],refetch } = useQuery({
         queryKey: ['myProducts'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/myproduct?email=${user?.email}`, {
+            const res = await fetch(`https://swap-market-server.vercel.app/myproduct?email=${user?.email}`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('token')}`
                 }
@@ -20,7 +20,7 @@ const MyProduct = () => {
         }
     })
     const deleteProduct = (id) =>{
-        fetch(`http://localhost:5000/deleteproduct/${id}`,{
+        fetch(`https://swap-market-server.vercel.app/deleteproduct/${id}`,{
             method:'DELETE'
         })
         .then(res=>res.json())
@@ -32,14 +32,14 @@ const MyProduct = () => {
     // handle advertisement
     const handleAdvertise =(id) =>{
         console.log(id)
-        fetch(`http://localhost:5000/advertise?id=${id}`,{
+        fetch(`https://swap-market-server.vercel.app/advertise?id=${id}`,{
             method:'POST',
         })
         .then(res=>res.json())
         .then(res=>{
             toast.success('Advertise Item Successfully');
             // update status on my product
-            fetch(`http://localhost:5000/advertise?id=${id}`,{
+            fetch(`https://swap-market-server.vercel.app/advertise?id=${id}`,{
                 method:'PUT'
             })
             .then(res=>res.json())

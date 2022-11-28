@@ -21,7 +21,7 @@ const AddProduct = () => {
     const {data:isVerified} = useQuery({
         queryKey:['verified'],
         queryFn:async()=>{
-            const res = await fetch(`http://localhost:5000/verifiedseller?email=${user?.email}`);
+            const res = await fetch(`https://swap-market-server.vercel.app/verifiedseller?email=${user?.email}`);
             const data = await res.json();
             return data;
         }
@@ -53,7 +53,7 @@ const AddProduct = () => {
                 verifyStatus:isVerified.verified
             };
             console.log(product)
-            fetch('http://localhost:5000/uploadcar',{
+            fetch('https://swap-market-server.vercel.app/uploadcar',{
                 method:'POST',
                 headers:{
                     'content-type':'application/json',

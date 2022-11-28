@@ -9,7 +9,7 @@ const MyOrder = () => {
     const { data: myOrders = [] } = useQuery({
         queryKey: ['orders'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/order?email=${user?.email}`, {
+            const res = await fetch(`https://swap-market-server.vercel.app/order?email=${user?.email}`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('token')}`
                 }

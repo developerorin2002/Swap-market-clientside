@@ -26,7 +26,7 @@ const Register = () => {
         // register account 
         handleRegistration(email, password)
             .then(res => {
-                fetch(`http://localhost:5000/jwt?email=${res.user.email}`)
+                fetch(`https://swap-market-server.vercel.app/jwt?email=${res.user.email}`)
                     .then(res => res.json())
                     .then(token => {
                         localStorage.setItem('token', token.token);
@@ -50,7 +50,7 @@ const Register = () => {
                                     role: account,
                                     image: photoUrl,
                                 };
-                                fetch('http://localhost:5000/users', {
+                                fetch('https://swap-market-server.vercel.app/users', {
                                     method: 'POST',
                                     headers: {
                                         'content-type': 'application/json'
@@ -79,7 +79,7 @@ const Register = () => {
     const googleRegister = () => {
         handleGoogleRegister()
             .then(res => {
-                fetch(`http://localhost:5000/jwt?email=${res.user.email}`)
+                fetch(`https://swap-market-server.vercel.app/jwt?email=${res.user.email}`)
                     .then(res => res.json())
                     .then(token => {
                         localStorage.setItem('token', token.token);
@@ -89,7 +89,7 @@ const Register = () => {
                             role: 'buyer',
                             image:res.user.photoURL,
                         };
-                        fetch('http://localhost:5000/users', {
+                        fetch('https://swap-market-server.vercel.app/users', {
                                     method: 'POST',
                                     headers: {
                                         'content-type': 'application/json'

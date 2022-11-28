@@ -6,7 +6,7 @@ const HomeCategory = () => {
     const {data: categories =[]} = useQuery({
         queryKey:['category'],
         queryFn:async()=>{
-            const res = await fetch('http://localhost:5000/category');
+            const res = await fetch('https://swap-market-server.vercel.app/category');
             const data = await res.json();
             return data;
         }

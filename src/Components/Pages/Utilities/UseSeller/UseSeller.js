@@ -6,7 +6,7 @@ const UseSeller = (email) =>{
     const [isloading , setIsLoading ] = useState(true);
     useEffect(()=>{
         setIsLoading(true);
-        fetch(`http://localhost:5000/seller?email=${email}`)
+        fetch(`https://swap-market-server.vercel.app/seller?email=${email}`)
         .then(res=>res.json())
         .then(data=>{
             setIsSeller(data.isSeller)

@@ -32,7 +32,7 @@ const BookingModal = ({ open, setOpen, handleClose, handleOpen, carInfo, user })
             productId:carInfo._id
         };
         
-        fetch('http://localhost:5000/order',{
+        fetch('https://swap-market-server.vercel.app/order',{
             method:'POST',
             headers:{
                 'content-type':'application/json'

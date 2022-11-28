@@ -4,7 +4,7 @@ import axios from 'axios';
 const Advertise = () => {
     const [advertiseProduct,setAdvertiseProduct] = useState([]);
     useEffect(()=>{
-        axios.get('http://localhost:5000/advertise')
+        axios.get('https://swap-market-server.vercel.app/advertise')
         .then(data=>{
             setAdvertiseProduct(data.data)
         })

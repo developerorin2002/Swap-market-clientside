@@ -7,14 +7,14 @@ const ReportedItems = () => {
     const { data: reportedItems = [],refetch } = useQuery({
         queryKey: ['reportedItems'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/reported');
+            const res = await fetch('https://swap-market-server.vercel.app/reported');
             const data = await res.json();
             return data;
         }
     });
     const handleProductDelete = (id)=>{
         console.log(id);
-        fetch(`http://localhost:5000/reported/${id}`,{
+        fetch(`https://swap-market-server.vercel.app/reported/${id}`,{
             method:'DELETE'
         })
         .then(res=>res.json())

@@ -7,7 +7,7 @@ const AllSeller = () => {
     const { data: allUsers = [], refetch } = useQuery({
         queryKey: ['allUsers'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/allseller',{
+            const res = await fetch('https://swap-market-server.vercel.app/allseller',{
                 headers:{
                     authorization:`bearer ${localStorage.getItem('token')}`
                 }
@@ -18,7 +18,7 @@ const AllSeller = () => {
     })
     const handleDelete = (id)=>{
         console.log(id);
-        fetch(`http://localhost:5000/allseller/${id}`,{
+        fetch(`https://swap-market-server.vercel.app/allseller/${id}`,{
             method:'DELETE'
         })
         .then(res=>res.json())
@@ -28,7 +28,7 @@ const AllSeller = () => {
         })
     };
     const handleVerify = (id) =>{
-        fetch(`http://localhost:5000/verifyseller/${id}`,{
+        fetch(`https://swap-market-server.vercel.app/verifyseller/${id}`,{
             method:'PUT'
         })
         .then(res=>res.json())

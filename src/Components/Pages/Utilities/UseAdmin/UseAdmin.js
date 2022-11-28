@@ -6,7 +6,7 @@ const UseAdmin = (email) =>{
     const [isAdminLoading,setIsAdminLoading] = useState(true);
     useEffect(()=>{
         setIsAdminLoading(true);
-        fetch(`http://localhost:5000/admin?email=${email}`)
+        fetch(`https://swap-market-server.vercel.app/admin?email=${email}`)
         .then(res=>res.json())
         .then(data=>{
             setIsAdmin(data.isAdmin)

@@ -41,7 +41,7 @@ const router = createBrowserRouter([
             },
             {
                 path:'/category/:category',
-                loader:({params})=>fetch(`http://localhost:5000/allcars/${params.category}`),
+                loader:({params})=>fetch(`https://swap-market-server.vercel.app/allcars/${params.category}`),
                 element:<PrivateRoute><DisplayCars></DisplayCars></PrivateRoute>
             },
             {
@@ -99,7 +99,7 @@ const router = createBrowserRouter([
             },
             {
                 path:'/dashboard/payment/:id',
-                loader:({params})=>fetch(`http://localhost:5000/myorders/${params.id}`),
+                loader:({params})=>fetch(`https://swap-market-server.vercel.app/myorders/${params.id}`),
                 element:<BuyerPrivateRoute><Payment></Payment></BuyerPrivateRoute>
             }
         ]

@@ -12,7 +12,7 @@ const CheckOut = ({ userData }) => {
     const navigate = useNavigate();
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://swap-market-server.vercel.app/create-payment-intent", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ price }),
@@ -57,7 +57,7 @@ const CheckOut = ({ userData }) => {
         );
         console.log(paymentIntent);
         if(paymentIntent.status === 'succeeded'){
-            fetch(`http://localhost:5000/updateproduct/${userData.productId}`,{
+            fetch(`https://swap-market-server.vercel.app/updateproduct/${userData.productId}`,{
                 method:'PUT'
             })
             .then(res=>res.json())
