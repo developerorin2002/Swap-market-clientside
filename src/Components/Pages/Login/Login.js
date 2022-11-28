@@ -31,14 +31,37 @@ const Login = () => {
     
     const handleGoogleLogin = () =>{
         handleGoogleSignIn()
-        .then(res=>{
+        .then(res => {
             fetch(`http://localhost:5000/jwt?email=${res.user.email}`)
-                    .then(res => res.json())
-                    .then(token => {
-                        localStorage.setItem('token', token.token);
-                    });
-            toast.success('Login Successfully')
-            navigate('/dashboard')
+                .then(res => res.json())
+                .then(token => {
+                    localStorage.setItem('token', token.token);
+                    const user = {
+                        name: res.user.displayName,
+                        email: res.user.email,
+                        role: 'buyer',
+                        image:res.user.photoURL,
+                    };
+                    fetch('http://localhost:5000/users', {
+                                method: 'POST',
+                                headers: {
+                                    'content-type': 'application/json'
+                                },
+                                body: JSON.stringify(user)
+                            })
+                                .then(res => res.json())
+                                .then(data => {
+
+                                    toast.success('Register successfully')
+                                    //navigate to dashboard 
+                                    navigate('/dashboard')
+
+
+                            })
+                    
+            });
+            
+            
         })
         .catch(err=>toast.error(err))
     }

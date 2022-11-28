@@ -104,7 +104,7 @@ const Register = () => {
                                         navigate('/dashboard')
 
 
-                                    })
+                                })
                         
                 });
                 
