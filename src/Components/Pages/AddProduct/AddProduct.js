@@ -113,7 +113,7 @@ const AddProduct = () => {
                             </div>
                             <div className="row">
                                 <div className='my-2 col-lg-6'>
-                                    <TextField required {...register("condition")} className='w-100' label="condition" id="outlined-basic" variant="outlined" />
+                                    <TextField required {...register("condition")} className='w-100' label="uses years" id="outlined-basic" variant="outlined" />
                                 </div>
                                 <div className='my-2 col-lg-6 '>
                                     <TextField required {...register("description")} className='w-100' label="Description" id="outlined-basic" variant="outlined" />

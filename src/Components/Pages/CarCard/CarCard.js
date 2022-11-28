@@ -1,4 +1,3 @@
-import { Button } from '@mui/material';
 import React from 'react';
 import './CarCard.css'
 import { FaTimesCircle, FaCheckCircle,FaBan } from "react-icons/fa";
@@ -17,7 +16,7 @@ const CarCard = ({ car, handleOpen,reportedItems }) => {
                 <div className='price-section px-3'>
                     <p>original price : {originalPrice}</p>
                     <p className='resale-p'>ResalePrice : ${resalePrice}</p>
-                    <p>Uses Condition :{uses}</p>
+                    <p>Uses Years : {uses}</p>
                 </div>
                 <div className='price-section px-3'>
                     <p>posting date : {postingDate}</p>
@@ -32,7 +31,7 @@ const CarCard = ({ car, handleOpen,reportedItems }) => {
                     <button onClick={()=>reportedItems(_id)} className='wishlist-btn'>Report<FaBan/></button>
                 </div>
 
-                <Button className='book-now-btn' onClick={() => handleOpen(car)}>Book Now</Button>
+                <button className='book-now-btn' onClick={() => handleOpen(car)}>Book Now</button>
             </div>
         </div>
     );

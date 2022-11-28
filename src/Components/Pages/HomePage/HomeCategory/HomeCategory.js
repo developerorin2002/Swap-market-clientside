@@ -17,7 +17,7 @@ const HomeCategory = () => {
             <div className="container">
                 <div className="row">
                     <div className="col-lg-12">
-                        <h3 className='text-center py-4'>Car Category</h3>
+                        <h3 className='text-center py-4'>Second Hand Car Category</h3>
                         <div className="row">
                             {
                                 categories.map(category=><Category key={category._id} category={category}></Category>)
