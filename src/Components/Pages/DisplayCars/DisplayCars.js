@@ -23,14 +23,22 @@ const DisplayCars = () => {
         })
         .then(res=>res.json())
         .then(data=>{
-            toast.success('Reported To Admin')
+            
+            fetch(`http://localhost:5000/reportedproduct/${id}`,{
+                method:'PUT'
+            })
+            .then(res=>res.json())
+            .then(res=>{
+                toast.success('Reported To Admin');
+            })
         })
+        
     }
     return (
         <div>
             <div className="container g-3">
                 <h3 className='text-center'>Matched Car </h3>
-                <div className="row g-4">
+                <div className="row g-4 py-3">
                     {
                         cars.map(car=><CarCard reportedItems={reportedItems} setOpen={setOpen} open={open} handleClose={handleClose} handleOpen={handleOpen} key={car._id} car={car}></CarCard>)
                     }

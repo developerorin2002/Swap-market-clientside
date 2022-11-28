@@ -29,7 +29,7 @@ const ReportedItems = () => {
             <div className="container">
                 <div className="row g-4">
                     {
-                        reportedItems.map(reportedItem => <ReportedCard handleProductDelete={handleProductDelete} key={reportedItem._Id} reportedItem={reportedItem}></ReportedCard>)
+                        reportedItems.map(reportedItem => <ReportedCard handleProductDelete={handleProductDelete} key={reportedItem._id} reportedItem={reportedItem}></ReportedCard>)
                     }
                 </div>
             </div>

@@ -6,7 +6,7 @@ const Category = ({category}) => {
     const {category:carCategory,img} = category;
     return (
         <div className='col-lg-4'>
-            <div className="card-shadow">
+            <div className="card-shadow shadow-lg">
                 <div className="card-image">
                     <img src={img} alt="" className='w-100 img-fluid' />
                 </div>
