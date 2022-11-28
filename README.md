@@ -17,3 +17,7 @@ LIVE WEBSITE LINK [Swap Car](https://swap-market-f20f3.web.app/).
 adminEmail: <developerorin2002@gmail.com>
 
 adminPassword: asasas
+
+sellerEmail : <abc@gmail.com>
+SellerPassword : asasas
+

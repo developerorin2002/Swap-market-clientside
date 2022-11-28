@@ -12,14 +12,14 @@ const Advertise = () => {
     return (
         <div>
             {
-                advertiseProduct.length>=2 ? <><h3 className='text-center py-2' >Advertised Product</h3></>:<></>
+                advertiseProduct.length>2 ? <><h3 className='text-center py-2' >Advertised Product</h3></>:<></>
             }
             {
-                advertiseProduct.length >= 2 ?
+                advertiseProduct.length > 2 ?
 
                     <>
                         <div className="container">
-                            <div className="row">
+                            <div className="row g-4">
                                 {
                                     advertiseProduct.map(product => {  return product.paid ? <></>:<AdvertiseCard product={product} key={product._id}></AdvertiseCard>})
                                 }
