@@ -14,7 +14,9 @@ const Advertise = () => {
     console.log(advertiseProduct);
     return (
         <div>
-            <h3 className='text-center py-2' >Advertised Product</h3>
+            {
+                advertiseProduct.length>=2 ? <><h3 className='text-center py-2' >Advertised Product</h3></>:<></>
+            }
             {
                 advertiseProduct.length >= 2 ?
 

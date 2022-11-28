@@ -17,6 +17,8 @@ import Payment from "../Pages/Payment/Payment";
 import Register from "../Pages/Register/Register";
 import ReportedItems from "../Pages/ReportedItems/ReportedItems";
 import SellerPrivateRoute from "../Pages/SellerPrivateRoute/SellerPrivateRoute";
+import ThankYou from "../Pages/ThankYou/ThankYou";
+import WelcomeDashboard from "../Pages/WelcomeDashboard/WelcomeDashboard";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
@@ -63,10 +65,10 @@ const router = createBrowserRouter([
         path:'/dashboard',
         element:<PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
         children:[
-            // {
-            //     path:'/dashboard',
-            //     element:<BuyerPrivateRoute></BuyerPrivateRoute>
-            // },
+            {
+                path:'/dashboard',
+                element:<WelcomeDashboard></WelcomeDashboard>
+            },
             {
                 path:'/dashboard/addproduct',
                 element:<SellerPrivateRoute><AddProduct></AddProduct></SellerPrivateRoute>
@@ -74,6 +76,10 @@ const router = createBrowserRouter([
             {
                 path:'/dashboard/myorder',
                 element:<BuyerPrivateRoute><MyOrder></MyOrder></BuyerPrivateRoute>
+            },
+            {
+                path:'/dashboard/thankyou',
+                element:<BuyerPrivateRoute><ThankYou></ThankYou></BuyerPrivateRoute>
             },
             {
                 path:'/dashboard/reported',

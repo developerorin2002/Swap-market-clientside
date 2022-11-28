@@ -9,4 +9,8 @@
     border: 1px solid #eaeaea;
     padding: 5px;
     margin-bottom: 5px;
+    color: black;
+}
+.home-btn{
+    font-size: 30px;
 }

@@ -6,6 +6,7 @@ import UseBuyerHook from '../../Pages/Utilities/UseBuyer/UseBuyer';
 import UseSeller from '../../Pages/Utilities/UseSeller/UseSeller';
 import Footer from '../../Shared/Footer/Footer';
 import Header from '../../Shared/Header/Header';
+import { FaHome } from "react-icons/fa";
 import './DashboardLayout.css'
 const DashboardLayout = () => {
     const { user } = useContext(AuthContext)
@@ -23,11 +24,12 @@ const DashboardLayout = () => {
                 <div className="row">
                     <div className="col-lg-3">
                         <div className='dashboard-nav py-5 text-center'>
+                            <p className='home-btn'><Link to="/dashboard"><FaHome/></Link></p>
                             {
                                 isSeller && <Link to="/dashboard/addproduct">Addproduct</Link>
                             }
                             {
-                                isBuyer && <Link to="/dashboard/myorder">myorder</Link>
+                                isBuyer && <Link to="/dashboard/myorder">Myorder</Link>
                             }
                             {
                                 isAdmin && <Link to="/dashboard/allseller">All Seller</Link>

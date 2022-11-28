@@ -1,4 +1,5 @@
 import React from 'react';
+import AboutUs from '../AboutUs/AboutUs';
 import Advertise from '../Advertise/Advertise';
 import HomeCategory from '../HomeCategory/HomeCategory';
 import './Home.css'
@@ -23,6 +24,9 @@ const Home = () => {
             </div>
             <div className='my-3'>
                <Advertise></Advertise>
+            </div>
+            <div className='my-3'>
+               <AboutUs></AboutUs>
             </div>
         </div>
     );

@@ -35,9 +35,9 @@ const AllBuyers = () => {
                 <thead>
                     <tr>
                         <th className='text-center'>Serial Number</th>
-                        <th className='text-center'>Seller Name </th>
-                        <th className='text-center'>Seller Email</th>
-                        <th className='text-center'>Seller Image</th>
+                        <th className='text-center'>Buyer Name </th>
+                        <th className='text-center'>Buyer Email</th>
+                        <th className='text-center'>Buyer Image</th>
                         <th className='text-center'>Action</th>
                         
                     </tr>

@@ -47,7 +47,7 @@ const AllSeller = () => {
                         <th>Serial Number</th>
                         <th>Seller Name </th>
                         <th>Seller Email</th>
-                        <th>Seller Number</th>
+                        <th>Seller Image</th>
                         <th>Action</th>
                         <th>Status</th>
                     </tr>

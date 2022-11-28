@@ -4,19 +4,14 @@ import './Footer.css';
 const Footer = () => {
     return (
         <div>
-            <div className='footer footer-bg py-3'>
-                <div className="container">
+            <div className='footer footer-bg py-4 '>
+                <div className="container py-3">
                     <div className="row align-items-center">
-                        <div className="col-lg-4 ">
-                            <p className='footer-text text-center'><Link to='/home'>Home</Link></p>
-                            <p className='footer-text text-center'><Link to='/login'>Login</Link></p>
-                            <p className='footer-text text-center'><Link to='/register'>Register</Link></p>
-
-                        </div>
-                        <div className="col-lg-4">
-                            <p className='footer-text text-center'><Link to='/blog'>Blog</Link></p>
-                            <p className='footer-text text-center'><Link to='/addservice'>Add Service</Link></p>
-                            <p className='footer-text text-center'><Link to='/myreviews'>My Reviews</Link></p>
+                        <div className="col-lg-8 d-flex">
+                            <p className='footer-text text-center mx-2'><Link to='/home'>Home</Link></p>
+                            <p className='footer-text text-center mx-2'><Link to='/login'>Login</Link></p>
+                            <p className='footer-text text-center mx-2'><Link to='/register'>Register</Link></p>
+                            <p className='footer-text text-center '><Link to='/blogs'>Blog</Link></p>
                         </div>
                         <div className="col-lg-4 d-flex">
                             <input type="text" className='w-75 py-3 border-0' placeholder='write your email'  />
