@@ -13,3 +13,7 @@ LIVE WEBSITE LINK [Organic Food Cloud](https://food-cloud-c4e01.web.app/).
 - After Clicking A category user can see to this relevent car 
 - This Website Has Dynamic Login , and Private Routing For Safe This Website Anonymous  Data , Secured With JWT Token , 
 - This Website has 3 role .1.User 2.seller 3.admin
+
+adminEmail: <developerorin2002@gmail.com>
+
+adminPassword: <asasas>
