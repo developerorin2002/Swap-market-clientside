@@ -6,7 +6,9 @@ import login from '../../Assets/login.svg';
 import './Login.css'
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 const Login = () => {
+    const navigate = useNavigate();
     const { userLogin,handleGoogleSignIn } = useContext(AuthContext)
     const { register, handleSubmit } = useForm();
     const handleLogin = (data) => {
@@ -19,7 +21,9 @@ const Login = () => {
                     .then(token => {
                         localStorage.setItem('token', token.token);
                     });
-                toast.success('login successfull')
+                toast.success('login successfull');
+                // navigate to login 
+               navigate('/dashboard')
 
             })
             .catch(err => toast.error(`${err}`))
@@ -28,13 +32,13 @@ const Login = () => {
     const handleGoogleLogin = () =>{
         handleGoogleSignIn()
         .then(res=>{
-            console.log(res.user)
             fetch(`http://localhost:5000/jwt?email=${res.user.email}`)
                     .then(res => res.json())
                     .then(token => {
                         localStorage.setItem('token', token.token);
                     });
             toast.success('Login Successfully')
+            navigate('/dashboard')
         })
         .catch(err=>toast.error(err))
     }
