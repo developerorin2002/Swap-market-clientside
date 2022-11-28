@@ -16,4 +16,4 @@ LIVE WEBSITE LINK [Organic Food Cloud](https://food-cloud-c4e01.web.app/).
 
 adminEmail: <developerorin2002@gmail.com>
 
-adminPassword: <'asasas'>
+adminPassword: asasas
